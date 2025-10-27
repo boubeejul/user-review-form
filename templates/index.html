@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/style.css">
+    <title>Sistema de Avaliação de Clientes</title>
+</head>
+<body>
+    <header>
+        <h1>Sistema de Avaliação</h1>
+    </header>
+
+    <main>
+        <section id="form-wrapper">
+            <h2>Deixe sua avaliação</h2>
+
+            <form action="" id="review-form">
+                <div class="review-form-single-box">
+                    <label for="review-title">Título</label>
+                    <input type="text" name="review-title" id="review-title">
+                </div>
+
+                <div class="review-form-multiple-box">
+                    <div class="review-form-single-box">
+                        <label for="review-username">Seu Nome</label>
+                        <input type="text" name="review-username" id="review-username">
+                    </div>
+
+                    <div class="review-form-single-box">
+                        <label for="review-score">Sua Nota</label>
+                        <input type="range" name="review-score" id="review-score">
+                    </div>
+                </div>
+
+                <div class="review-form-single-box">
+                    <label for="review-message">Sua Opinião</label>
+                    <textarea name="review-message" id="review-message" maxlength="150"></textarea>
+                </div>
+
+                <button type="submit" class="review-form-button">Enviar</button>
+            </form>
+
+        </section>
+
+        <section id="reviews-list">
+            <div class="review">
+                <h3>Achei legal, mas...</h3>
+                <p>👤 Usuário | ⭐ 5 | 📅 24/10/2025</p>
+
+                <p>Ainda nao abri</p>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
