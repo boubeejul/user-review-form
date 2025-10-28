@@ -1,3 +1,5 @@
+{% import 'macros/form.html' as form %}
+{% import 'macros/reviews.html' as review %}
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -17,22 +19,9 @@
             <h2>Deixe sua avaliação</h2>
 
             <form action="/submit-review" method="post" id="review-form">
-                <div class="review-form-single-box">
-                    <label for="review-title">Título</label>
-                    <input type="text" name="review-title" id="review-title" required>
-                </div>
-
-                
-                <div class="review-form-single-box">
-                    <label for="review-username">Seu Nome</label>
-                    <input type="text" name="review-username" id="review-username" required>
-                </div>
-
-                <div class="review-form-single-box">
-                    <label for="review-message">Sua Opinião</label>
-                    <textarea name="review-message" id="review-message" maxlength="350" required></textarea>
-                </div>
-
+                {{ form.input(name="review-title", label="Título") }}
+                {{ form.input(name="review-username", label="Seu nome") }}
+                {{ form.text_area(name="review-message", label="Sua Opinião") }}
                 <button type="submit" class="review-form-button">Enviar</button>
             </form>
 
@@ -41,16 +30,16 @@
         <section id="reviews-list">
             <h3>⭐ Avaliações</h3>
 
-            <div class="review">
-                <div class="review-header">
-                    <h3>Achei legal, mas...</h3>
-                    <p class="review-header-info">👤 Usuário | 📅 24/10/2025</p>
-                </div>
-                
-                <div class="review-text">
-                    <p>Ainda nao abri</p>
-                </div>
-            </div>
+            {% if reviews and reviews|length > 0 %}
+                {% for user_review in reviews %}
+                    {{ review.review_box(username=user_review.get("username"), 
+                                          date=user_review.get("date"), 
+                                          title=user_review.get("title"),
+                                          message=user_review.get("message")) }}
+                {% endfor %}
+            {% else %}
+                <p>Ainda não há avaliações.</p>
+            {% endif %}
         </section>
     </main>
 </body>

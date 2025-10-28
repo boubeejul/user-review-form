@@ -1,0 +1,12 @@
+{% macro review_box(username='', date='', title='', message='') %}
+<div class="review">
+    <div class="review-header">
+        <h3>{{ title }}</h3>
+        <p class="review-header-info">👤 {{ username }} | 📅 {{ date }}</p>
+    </div>
+                
+    <div class="review-text">
+        <p>{{ message }}</p>
+    </div>
+</div>
+{% endmacro %}

@@ -1,11 +1,20 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, url_for
+import os
 
 app = Flask(__name__)
+app.secret_key = os.getenv("FLASK_SECRET_KEY")
 
 @app.route('/')
 def index():
     #TODO: get reviews from api
-    return render_template("index.html")
+
+    reviews = [{
+        "username" : "Usuário",
+        "title" : "Achei legal, mas...",
+        "message" : "Ainda nao testei",
+        "date": "24/10/2025"
+    }]
+    return render_template("index.html", reviews=reviews)
 
 @app.route('/submit-review', methods=['POST'])
 def submit_review():
@@ -14,8 +23,8 @@ def submit_review():
     message = request.form.get("review-message")
     
     #TODO: post review to api
-    return redirect("/")
-    
 
-if __name__ == '__main__':
+    return redirect(url_for("index"))
+
+if __name__ == "__main__":
     app.run(debug=True)
