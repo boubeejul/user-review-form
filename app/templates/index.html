@@ -1,0 +1,46 @@
+{% import 'macros/form.html' as form %}
+{% import 'macros/reviews.html' as review %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <title>Sistema de Avaliação de Clientes</title>
+</head>
+<body>
+    <header>
+        <h1>Sistema de Avaliação</h1>
+    </header>
+
+    <main>
+        <section id="form-wrapper">
+            <h2>Deixe sua avaliação</h2>
+
+            <form action="/submit-review" method="post" id="review-form">
+                {{ form.input(name="review-title", label="Título") }}
+                {{ form.input(name="review-username", label="Seu nome") }}
+                {{ form.text_area(name="review-message", label="Sua Opinião") }}
+                <button type="submit" class="review-form-button">Enviar</button>
+            </form>
+
+        </section>
+
+        <section id="reviews-list">
+            <h3>⭐ Avaliações</h3>
+
+            {% if reviews and reviews|length > 0 %}
+                {% for user_review in reviews %}
+                    {{ review.review_box(username=user_review.get("username"), 
+                                          date=user_review.get("date"), 
+                                          title=user_review.get("title"),
+                                          message=user_review.get("message")) }}
+                {% endfor %}
+            {% else %}
+                <p>Ainda não há avaliações.</p>
+            {% endif %}
+        </section>
+    </main>
+</body>
+</html>
