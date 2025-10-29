@@ -15,7 +15,7 @@ Este projeto consiste em um formulário para o envio de avaliações feito em Py
 - Boto3
 
 ## Arquitetura
-![Screenshot da arquitetura](https://github.com/user-attachments/assets/51b5a827-2c3e-407e-b04e-d3690495eb8b)
+![Screenshot da arquitetura](https://github.com/user-attachments/assets/5924d530-cec4-4364-a6f1-ba427fba2974)
 
 ## Estrutura do repositório
 
