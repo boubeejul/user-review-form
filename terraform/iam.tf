@@ -32,3 +32,24 @@ resource "aws_iam_role_policy" "lambda_dynamodb_policy" {
   role   = aws_iam_role.lambda_role.id
   policy = data.aws_iam_policy_document.lambda_dynamo_permissions.json
 }
+
+resource "aws_iam_role_policy_attachment" "lambda_logs" {
+  role       = aws_iam_role.lambda_role.name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+}
+
+resource "aws_lambda_permission" "apigw_invoke_1" {
+  statement_id  = "AllowAPIGatewayInvoke_SaveReview"
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.save_review_lambda.function_name
+  principal     = "apigateway.amazonaws.com"
+  source_arn    = "${aws_apigatewayv2_api.api_gateway.execution_arn}/*"
+}
+
+resource "aws_lambda_permission" "apigw_invoke_2" {
+  statement_id  = "AllowAPIGatewayInvoke_GetReviews"
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.get_reviews_lambda.function_name
+  principal     = "apigateway.amazonaws.com"
+  source_arn    = "${aws_apigatewayv2_api.api_gateway.execution_arn}/*"
+}
