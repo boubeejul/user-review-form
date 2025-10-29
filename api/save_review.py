@@ -9,12 +9,10 @@ table = dynamodb.Table(table_name)
 
 def handler(event, context):
     body = json.loads(event["body"])
-    print(body)
     username = body.get("username")
     title = body.get("title")
     date = body.get("date")
     message = body.get("message")
-
 
     try:
         table.put_item(
