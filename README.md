@@ -33,8 +33,7 @@ Este projeto consiste em um formulário para o envio de avaliações, feito em P
     {
         "username": "string",
         "title": "string",
-        "message": "string",
-        "date": "string"
+        "message": "string"
     }
     ```
 - Body retornado pelo GET:
