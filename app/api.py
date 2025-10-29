@@ -6,9 +6,8 @@ def get_reviews():
     response = requests.get(url=f"{api_url}/reviews")
 
     response.raise_for_status()
-    reviews = response.json()
 
-    return reviews.get("reviews")
+    return response.json().get("reviews")
 
 def save_review(review: dict):
     api_url = os.getenv("AWS_API_URL")
