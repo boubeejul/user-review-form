@@ -1,13 +1,13 @@
 import json
 import os
 import boto3
+from uuid import uuid4
 
 dynamodb = boto3.resource('dynamodb')
 table_name = os.environ["TABLE_NAME"]
-table = dynamodb.Table('UsersReviews')
+table = dynamodb.Table(table_name)
 
 def handler(event, context):
-    id = event.get("id")
     username = event.get("username")
     title = event.get("title")
     date = event.get("date")
@@ -16,7 +16,8 @@ def handler(event, context):
     try:
         table.put_item(
             Item={
-                'ID': id,
+                'PK': 'REVIEW',
+                'SK': f'REVIEW_ID#{str(uuid4())}',
                 'username': username,
                 'title': title,
                 'date': date,
@@ -26,7 +27,7 @@ def handler(event, context):
 
         return {
             'statusCode': 200,
-            'body': json.dumps({'message': 'Avaliação salva com sucesso.'})
+            'body': json.dumps({'message': 'Sua avaliação foi enviada com sucesso.'})
         }
 
     except Exception as e:
