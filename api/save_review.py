@@ -8,10 +8,13 @@ table_name = os.environ["TABLE_NAME"]
 table = dynamodb.Table(table_name)
 
 def handler(event, context):
-    username = event.get("username")
-    title = event.get("title")
-    date = event.get("date")
-    message = event.get("message")
+    body = json.loads(event["body"])
+    print(body)
+    username = body.get("username")
+    title = body.get("title")
+    date = body.get("date")
+    message = body.get("message")
+
 
     try:
         table.put_item(
@@ -27,7 +30,10 @@ def handler(event, context):
 
         return {
             'statusCode': 200,
-            'body': json.dumps({'message': 'Sua avaliação foi enviada com sucesso.'})
+            'body': json.dumps({'message': 'Sua avaliação foi enviada com sucesso.'}),
+            "headers": {
+                "Content-Type": "application/json"
+            }
         }
 
     except Exception as e:

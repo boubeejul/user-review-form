@@ -13,9 +13,16 @@ def handler(event, context):
             KeyConditionExpression=Key('PK').eq('REVIEW')
         )
 
+        for review in reviews["Items"]:
+            review.pop("SK")
+            review.pop("PK")
+
         return {
             'statusCode': 200,
-            'body': json.dumps({'reviews': reviews['Items']})
+            'body': json.dumps({'reviews': reviews}),
+            "headers": {
+                "Content-Type": "application/json"
+            }
         }
 
     except Exception as e:
