@@ -33,7 +33,8 @@ Este projeto consiste em um formulário para o envio de avaliações feito em Py
     {
         "username": "string",
         "title": "string",
-        "message": "string"
+        "message": "string",
+        "date": "string"
     }
     ```
 - Body retornado pelo GET:
