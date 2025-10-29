@@ -17,6 +17,13 @@
     <main>
         <section id="form-wrapper">
             <h2>Deixe sua avaliação</h2>
+            {% for category, message in get_flashed_messages(with_categories=true) %}
+                {% if category == "success_post" %}
+                <p class="form-message">✅ {{ message }}</p>
+                {% elif category == "failed_post" %}
+                <p class="form-message">❌ {{ message }}</p>
+                {% endif %}
+            {% endfor %}
 
             <form action="/submit-review" method="post" id="review-form">
                 {{ form.input(name="review-title", label="Título") }}

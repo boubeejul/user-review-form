@@ -19,7 +19,7 @@ def handler(event, context):
 
         return {
             'statusCode': 200,
-            'body': json.dumps({'reviews': reviews}),
+            'body': json.dumps({'reviews': reviews["Items"]}),
             "headers": {
                 "Content-Type": "application/json"
             }
