@@ -1,7 +1,7 @@
 
 # Formulário de Avaliação
 
-Este projeto consiste em um formulário para o envio de avaliações, feito em Python + Flask com uso de DynamoDB e API Gateway na AWS com objetivo de praticar a criação de infraestrutura via IaC e integrá-la a uma aplicação.
+Este projeto consiste em um formulário para o envio de avaliações feito em Python + Flask com uso de DynamoDB e API Gateway na AWS com objetivo de praticar a criação de infraestrutura via IaC e integrá-la a uma aplicação.
 
 ## Screenshot
 ![Screenshot da aplicação](https://github.com/user-attachments/assets/d4c187cd-fcd5-4751-ac3c-0110010f4ec3)
