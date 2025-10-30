@@ -85,3 +85,7 @@ Utilizadas pelo Terraform e Boto3 (se for rodar as funções localmente):
 
     # Rodar a aplicação
     cd .. && python3 app/app.py
+
+## Aprendizados
+
+https://boubeejul.gitbook.io/blog/projetos-praticos/laboratorios-aws/formulario-de-avaliacao-com-api-gateway-e-dynamodb
